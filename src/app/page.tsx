@@ -9,7 +9,7 @@ const Home = () => {
 
     useEffect(() => {
         if (room) {
-            ws.current = new WebSocket(`https://chatapp-backend-lhk3.onrender.com//ws/${room}`);
+            ws.current = new WebSocket(`wss://chatapp-backend-lhk3.onrender.com//ws/${room}`);
             ws.current.onmessage = (event) => {
                 setChat((prevChat) => [...prevChat, event.data]);
             };
