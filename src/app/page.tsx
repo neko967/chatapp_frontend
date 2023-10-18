@@ -21,13 +21,10 @@ const Home = () => {
     }, [room]);
 
     const sendMessage = () => {
-        if (1 === WebSocket.OPEN) {
-            if (ws.current && message) {
-                ws.current.send(message);
-                setMessage("");
-            }
+        if (ws.current && message) {
+            ws.current.send(message);
+            setMessage("");
         }
-        
     };
 
     return (
