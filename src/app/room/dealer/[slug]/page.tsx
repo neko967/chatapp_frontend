@@ -9,12 +9,15 @@ export default function Dealer({ params }: { params: { slug: string } }) {
 
   useEffect(() => {
     async function checkRoomExists() {
-      const res = await fetch(`/api/room-exists/${params.slug}`);
+      const res = await fetch(`https://chatapp-backend-lhk3.onrender.com/api/room-exists/${params.slug}`);
       const data = await res.json();
+      console.log(`${data.exists}`);
 
       if (!data.exists) {
+        console.log("ここにいるよ1");
         router.push('/waiting_room');
       } else {
+        console.log("ここにいるよ２");
         const currentHost = window.location.host; // 例: localhost:3000
         const wsHost = currentHost.replace('3000', '8000');
         const websocketUrl = `ws://${wsHost}/ws/${params.slug}`;

@@ -11,7 +11,7 @@ export default function Player({ params }: {
 
   useEffect(() => {
     async function checkRoomExists() {
-      const res = await fetch(`/api/room-exists/${params.slug}`);
+      const res = await fetch(`https://chatapp-backend-lhk3.onrender.com/api/room-exists/${params.slug}`);
       const data = await res.json();
 
       if (!data.exists) {
